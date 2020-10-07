@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  gather_facts: false
+  vars:
+    file_name: '/etc/exim.strings.conf.custom'
+  tasks:
+    - file:
+        path: '{{file_name}}'
+        state: touch
+        mode: 0644
+        owner: root
+        content:  |
+          RBL_DNS_LIST==b.barracudacentral.org : bl.spamcop.net : mail.bl.blocklist.de : cbl.abuseat.org : combined.rbl.msrbl.net : bl.mailspike.net : zen.spamhaus.org : bl.spameatingmonkey.net : hostkarma.junkemailfilter.com=127.0.0.2 :  psbl.surriel.com : spam.spamrats.com : dnsbl.inps.de : dnsbl.cobion.com : rbl.realtimeblacklist.com : zombie.dnsbl.sorbs.net : nomail.rhsbl.sorbs.net : bl.hrbl.hu : uribl.hrbl.hu
